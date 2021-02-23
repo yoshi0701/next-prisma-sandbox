@@ -9,6 +9,7 @@
     "start": "next start",
     "prisma:init": "prisma init",
     "prisma:migrate": "prisma migrate dev --preview-feature",
+    "prisma:studio": "npx prisma studio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
