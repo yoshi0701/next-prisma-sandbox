@@ -1,13 +1,9 @@
-
-
 const Index = () => {
   return (
     <div>
-      <p>
-        Index page
-      </p>
+      <p>Index page</p>
     </div>
-  )
-}
+  );
+};
 
 export default Index;

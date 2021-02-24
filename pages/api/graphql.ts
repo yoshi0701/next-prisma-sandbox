@@ -1,29 +1,35 @@
-import {ApolloServer} from 'apollo-server-micro';
-import {makeExecutableSchema} from 'graphql-tools';
+import { ApolloServer } from 'apollo-server-micro';
+import { makeExecutableSchema } from 'graphql-tools';
 import Cors from 'micro-cors';
-import {typeDefs} from '../../utils/api/typeDefs';
-import {resolvers} from '../../utils/api/resolvers';
+import { typeDefs } from '../../utils/api/typeDefs';
+import { resolvers } from '../../utils/api/resolvers';
+import { applyMiddleware } from 'graphql-middleware';
+import { log } from '../../utils/api/log';
+import { permissions } from '../../utils/api/permissions';
 
 const cors = Cors();
 
-const schema = makeExecutableSchema({typeDefs, resolvers})
+const schema = applyMiddleware(
+  makeExecutableSchema({ typeDefs, resolvers }),
+  log,
+  permissions
+);
 
 export const config = {
   api: {
-    bodyParser: false
-  }
-}
+    bodyParser: false,
+  },
+};
 
 const handler = new ApolloServer({
-  schema
+  schema,
 }).createHandler({
-  path: '/api/graphql'
-})
+  path: '/api/graphql',
+});
 
 export default cors((req, res) => {
-  if(req.method === 'OPTIONS'){
-    return res.status(200).send()
+  if (req.method === 'OPTIONS') {
+    return res.status(200).send();
   }
-  return handler(req, res)
-})
-
+  return handler(req, res);
+});
