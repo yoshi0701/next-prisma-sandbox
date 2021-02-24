@@ -5,15 +5,15 @@ const {
   AUTH0_CLIENTID,
   AUTH0_DOMAIN,
   AUTH0_CLIENT_SECRET,
-AUTH0_SCOPE,
-AUTH0_COOKIE,
-BACKEND_ADDRESS
+　AUTH0_SCOPE,
+　AUTH0_COOKIE,
+　BACKEND_ADDRESS
 } = process.env
 
 
 module.exports = {
   publicRuntimeConfig: {
-    BACKEND_URL: `${BACKEND_ADDRESS}/api/greqpql`,
+    BACKEND_URL: `${BACKEND_ADDRESS}/api/graphql`,
   },
   serverRuntimeConfig: {
     auth: {
