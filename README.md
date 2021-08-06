@@ -1,0 +1,13 @@
+```
+touch .env
+```
+
+```
+DATABASE_URL='postgresql://'
+AUTH0_CLIENTID=
+AUTH0_DOMAIN=
+AUTH0_CLIENT_SECRET=
+AUTH0_SCOPE=
+AUTH0_COOKIE_SECRET=
+BACKEND_ADDRESS=http://localhost:
+```
