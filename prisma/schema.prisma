@@ -14,9 +14,10 @@ model Feed {
   id String @id
   name String
   url String @unique
-  author User? @relation("FeedAuthor", fields: [authorId])
+  author User? @relation("FeedAuthor", fields: [authorId], references: [id])
   authorId String?
   savedArticles SavedArticle[]
+  bundles Bundle[]
   tags FeedTag[]
   likes User[] @relation("FeedUserLikes")
 }
@@ -25,9 +26,10 @@ model Bundle {
   id String @id
   name String
   description String
-  author User? @relation("BundleAuthor", fields: [authorId])
+  author User? @relation("BundleAuthor", fields: [authorId], references: [id])
   authorId String?
   tags BundleTag[]
+  feeds Feed[]
   likes User[] @relation("BundleUserLikes")
 }
 
@@ -50,6 +52,9 @@ model SavedArticle  {
   feedId String?
   author User? @relation(fields: [authorId], references: [id])
   authorId String?
+  url String
+
+  @@index([authorId, url])
 }
 
 model BundleTag {
