@@ -25,7 +25,7 @@ model Feed {
 model Bundle {
   id String @id
   name String
-  description String
+  description String @default("")
   author User? @relation("BundleAuthor", fields: [authorId], references: [id])
   authorId String?
   tags BundleTag[]
@@ -38,7 +38,7 @@ model User {
   auth0 String @unique
   nickname String?
   picture String?
-  feeds Feed[] @relation("feedAuthor")
+  feeds Feed[] @relation("FeedAuthor")
   bundles Bundle[] @relation("BundleAuthor")
   feedLikes Feed[] @relation("FeedUserLikes")
   bundleLikes Bundle[] @relation("BundleUserLikes")
