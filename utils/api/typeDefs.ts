@@ -187,6 +187,10 @@ export const typeDefs = gql`
     connect: FeedWhereUniqueInput
   }
 
+  input DeleteSavedArticleInput {
+    id: String
+  }
+
   type Query {
     hello: String
     feed(data: FeedInput): Feed
@@ -209,5 +213,8 @@ export const typeDefs = gql`
     updateBundle(data: BundleUpdateInput): Bundle
     updateFeed(data: FeedUpdateInput): Feed
     createSavedArticle(data: SavedArticleCreateInput): SavedArticle
+    deleteBundle(data: BundleInput): Bundle
+    deleteFeed(data: FeedInput): Feed
+    deleteSavedArticle(data: DeleteSavedArticleInput): SavedArticle
   }
 `;

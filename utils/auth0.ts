@@ -9,7 +9,7 @@ export default initAuth0({
   ...auth,
   session: {
     cookieSecret,
-    cookieLifttime: 60 * 60 * 8,
+    cookieLifetime: 60 * 60 * 8,
     storeIdToken: false,
     storeAccessToken: false,
     storeRefreshToken: false,

@@ -6,7 +6,7 @@ const {
   AUTH0_DOMAIN,
   AUTH0_CLIENT_SECRET,
 　AUTH0_SCOPE,
-　AUTH0_COOKIE_SECRET,
+　AUTH0_COOKIE,
 　BACKEND_ADDRESS
 } = process.env
 
@@ -21,9 +21,9 @@ module.exports = {
       clientId: AUTH0_CLIENTID,
       clientSecret: AUTH0_CLIENT_SECRET,
       scope: AUTH0_SCOPE,
-      redirectUri: `{BACKEND_ADDRESS}/api/callback`,
+      redirectUri: `${BACKEND_ADDRESS}/api/callback`,
       postLogoutRedirectUri: `${BACKEND_ADDRESS}/`
     },
-    cookieSecret: AUTH0_COOKIE_SECRET
+    cookieSecret: AUTH0_COOKIE,
   }
 }

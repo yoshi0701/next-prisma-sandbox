@@ -11,10 +11,9 @@ if (process.env.NODE_ENV === 'production') {
   prisma = globalThis['prisma'];
 }
 
-export const context = async ({ req }) => {
+export const context = async ({ req, res }) => {
   try {
-    const auth0User = { nickname: 'faker', sub: '1', picture: '/blank.png' };
-    // const { user: auth0User } = await auth0.getSession(req);
+    const { user: auth0User } = await auth0.getSession(req, res);
     let user = await prisma.user.findUnique({
       where: { auth0: auth0User.sub },
     });
